@@ -105,14 +105,9 @@ def get_agent_response(question):
     print(response)
 
     prompt = f'''
-<<<<<<< Updated upstream
-    Please analyze the response and identify the UI elements in order. Return the names of these elements based on the order it was listed in response in a list format, like ["element1", "element2", "element3", ...]. 
-    If the UI element is like "button 2", make it "button2" in the list. Do not put "Answer: " in front of the list just return a list.
-=======
     Please analyze the response and identify the UI elements in order. 
     Return the names of these elements based on the order it was listed in response in a list format, 
-    like ["element1", "element2", "element3", ...]. 
->>>>>>> Stashed changes
+    like ["element1", "element2", "element3", ...]. Do not put "Answer: " in front of the list just return a list.
 
     Instruction: \"{response}\"
     '''
