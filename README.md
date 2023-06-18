@@ -1,0 +1,2 @@
+# GrandmaAI
+AI for grandma 👵
