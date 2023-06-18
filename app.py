@@ -31,23 +31,25 @@ def make_prompt(question):
         Here's an example interaction:
         
         ============EXAMPLE INTERACTION============
-    Question: How do I change my username?
-    Response: 
-        1. Select profile to go to the profile screen, then select username
+        Question: How do I change my username?
+        Response: 
+            1. Select profile to go to the profile screen, then select username
 
-    Question: How do I change my profile?
-    Response: 
-        1. Select profile to go to the profile screen
+        Question: How do I change my profile?
+        Response: 
+            1. Select profile to change your profile
 
-    Question: How do I get to my profile?
-    Response: 
-        1. Select profile to go to the profile screen
-    
-    Question: How do I get to search?
-    Response: 
-        1. Select profile to go to the profile screen, then select profile_button1 to get to the search screen
-    
+        Question: How do I go to my favorites?
+        Response: 
+            1. Select images to go to the images screen, then select favorites
 
+        Question: How do I get to my profile?
+        Response: 
+            1. Select profile to go to the profile screen
+        
+        Question: How do I access my hotspot?
+        Response: 
+            1. Select settings to go to the settings screen, then select hotspot
         =============================
         Given the above context, answer the user's question.
         
@@ -102,11 +104,15 @@ def get_agent_response(question):
     response = json_agent_executor.run(formatted_prompt)
     print(response)
 
-    response = "Select button2 to go to the profile screen, then select button5 to change your profile photo."
-
     prompt = f'''
+<<<<<<< Updated upstream
     Please analyze the response and identify the UI elements in order. Return the names of these elements based on the order it was listed in response in a list format, like ["element1", "element2", "element3", ...]. 
     If the UI element is like "button 2", make it "button2" in the list. Do not put "Answer: " in front of the list just return a list.
+=======
+    Please analyze the response and identify the UI elements in order. 
+    Return the names of these elements based on the order it was listed in response in a list format, 
+    like ["element1", "element2", "element3", ...]. 
+>>>>>>> Stashed changes
 
     Instruction: \"{response}\"
     '''
