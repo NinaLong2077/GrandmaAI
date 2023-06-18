@@ -10,22 +10,25 @@
         "goes_to": "settings",
         "highlighted": false
       },
+      "images": {
+        "goes_to": "images",
+        "highlighted": false
+      }
     }
   },
   "profile": {
     "name": "profile",
     "ui_elements": {
-      "text1": {
-        "text": "location",
-        "highlighted": false
-      },
-      "text2": {
+      "username": {
         "text": "username",
         "highlighted": false
       },
-      "profile_button1": {
-        "text": "go_to_search",
-        "goes_to": "search",
+      "bio": {
+        "text": "bio",
+        "highlighted": false
+      },
+      "password": {
+        "text": "password",
         "highlighted": false
       }
     }
@@ -33,31 +36,33 @@
   "settings": {
     "name": "settings",
     "ui_elements": {
-      "text1": {
-        "text": "notifications",
+      "wifi": {
+        "text": "wifi",
         "highlighted": false
       },
-      "settings_button1": {
-        "text": "go_to_logout",
-        "goes_to": "logout",
+      "bluetooth": {
+        "text": "bluetooth",
+        "highlighted": false
+      },
+      "hotspot": {
+        "text": "hotspot",
         "highlighted": false
       }
     }
   },
-  "search": {
-    "name": "search",
+  "images": {
+    "name": "images",
     "ui_elements": {
-      "text1": {
-        "text": "enter",
+      "album": {
+        "text": "album",
         "highlighted": false
-      }
-    }
-  },
-  "logout": {
-    "name": "logout",
-    "ui_elements": {
-      "text1": {
-        "text": "sign_out",
+      },
+      "favorite": {
+        "text": "favorite",
+        "highlighted": false
+      },
+      "selfie": {
+        "text": "selfie",
         "highlighted": false
       }
     }

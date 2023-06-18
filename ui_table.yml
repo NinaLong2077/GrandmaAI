@@ -1,48 +1,68 @@
 {
-  "screen1": {
+  "home": {
     "name": "home",
     "ui_elements": {
-      "button2": {
-        "goes_to": "screen2",
+      "profile": {
+        "goes_to": "profile",
         "highlighted": false
       },
-      "button3": {
-        "goes_to": "screen3",
+      "settings": {
+        "goes_to": "settings",
         "highlighted": false
       },
-      "button4": {
-        "goes_to": "screen4",
+      "images": {
+        "goes_to": "images",
         "highlighted": false
       }
     }
   },
-  "screen2": {
+  "profile": {
     "name": "profile",
     "ui_elements": {
-      "text1": {
-        "text": "location",
-        "highlighted": false
-      },
-      "text2": {
+      "username": {
         "text": "username",
         "highlighted": false
-      }
-    }
-  },
-  "screen3": {
-    "name": "settings",
-    "ui_elements": {
-      "text1": {
-        "text": "notifications",
+      },
+      "bio": {
+        "text": "bio",
+        "highlighted": false
+      },
+      "password": {
+        "text": "password",
         "highlighted": false
       }
     }
   },
-  "screen4": {
-    "name": "login",
+  "settings": {
+    "name": "settings",
     "ui_elements": {
-      "text1": {
-        "text": "sign_up",
+      "wifi": {
+        "text": "wifi",
+        "highlighted": false
+      },
+      "bluetooth": {
+        "text": "bluetooth",
+        "highlighted": false
+      },
+      "hotspot": {
+        "text": "hotspot",
+        "highlighted": false
+      }
+    }
+  },
+  "images": {
+    "name": "images",
+    "ui_elements": {
+      "album": {
+        "text": "album",
+        "highlighted": false
+      },
+      "favorite": {
+        "text": "favorite",
+        "highlighted": false
+      },
+      "selfie": {
+        "text": "selfie",
         "highlighted": false
       }
     }
