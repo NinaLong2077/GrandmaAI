@@ -65,6 +65,7 @@ def make_prompt(question):
 app = Flask(__name__)
 
 confusion_detected = False
+swift_data = 'False'
 
 @app.route('/') # empty page
 def index():
@@ -80,7 +81,16 @@ def check_confusion_detected():
     else:
         return jsonify(str(confusion_detected))
 
+@app.route('/api/swift', methods=['GET', 'POST'])
+def get_swift_data():
+    global swift_data
 
+    if request.method == 'POST':
+        swift_data = request
+        return jsonify('SWIFT DATA POSTED!')
+    else:
+        return jsonify(swift_data)
+    
 @app.route('/api/<path:question>', methods=['GET', 'POST'])
 def get_agent_response(question):
     # load the data
@@ -93,7 +103,7 @@ def get_agent_response(question):
     json_agent_executor = create_json_agent(
         llm=OpenAI(temperature=0),
         toolkit=json_toolkit,
-        verbose=True # verbose false so we don't see CoT
+        verbose=True # verbose false to not see CoT
     )
 
     # make the prompt with the question
