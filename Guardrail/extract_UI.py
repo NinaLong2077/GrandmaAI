@@ -1,7 +1,7 @@
 import openai
 
 # Set up your OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = ""
 
 # Define the instruction and schema
 instruction = "Select button2 to go to the profile screen, then select button5 to change your profile photo."
