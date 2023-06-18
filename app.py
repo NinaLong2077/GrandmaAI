@@ -4,6 +4,7 @@ from flask import render_template, jsonify, request
 import json
 import os
 import yaml
+import ast
 
 from langchain.agents import (
     create_json_agent,
@@ -81,17 +82,19 @@ def check_confusion_detected():
     else:
         return jsonify(str(confusion_detected))
 
-@app.route('/api/swift', methods=['GET', 'POST'])
+@app.route('/swift', methods=['GET'])
 def get_swift_data():
-    global swift_data
-
-    if request.method == 'POST':
-        swift_data = request
-        return jsonify('SWIFT DATA POSTED!')
-    else:
-        return jsonify(swift_data)
+    '''
+    reads data from json file. If json file dosen't exist then, returns the string 'data not found'
+    '''
+    try:
+        with open('swift_data.json', 'r') as file:
+            data = file.read()
+            return jsonify(data)
+    except FileNotFoundError:
+        return 'Data not found'
     
-@app.route('/api/<path:question>', methods=['GET', 'POST'])
+@app.route('/api/query/<path:question>', methods=['GET', 'POST'])
 def get_agent_response(question):
     # load the data
     data = load_ui_table() # load the ui_table
@@ -137,4 +140,12 @@ def get_agent_response(question):
 
     print(ui_elements)  # ["button1", "button2", "button3", ...]
 
+    swift_data = dict({})
+    swift_data['voice'] = response
+    swift_data['ui_elements'] = ast.literal_eval(ui_elements)
+
+    # write to swift dict
+    with open("swift_data.json", "w") as outfile:
+        json.dump(swift_data, outfile)
+    
     return jsonify(ui_elements)
