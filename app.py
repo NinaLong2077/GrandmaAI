@@ -66,7 +66,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/api/<path:question>')
+@app.route('/api/<path:question>', methods=['GET', 'POST'])
 def get_agent_response(question):
     # load the data
     data = load_ui_table() # load the ui_table
@@ -113,4 +113,4 @@ def get_agent_response(question):
 
     print(ui_elements)  # ["button1", "button2", "button3", ...]
 
-    return ui_elements
+    return jsonify(ui_elements)
