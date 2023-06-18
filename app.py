@@ -33,16 +33,25 @@ def make_prompt(question):
         ============EXAMPLE INTERACTION============
     Question: How do I change my username?
     Response: 
-        1. Select button2 to go to the profile screen, then select username
+        1. Select profile to go to the profile screen, then select username
 
     Question: How do I change my profile?
     Response: 
-        1. Select button2 to go to the profile screen
+        1. Select profile to go to the profile screen
+
+    Question: How do I get to my profile?
+    Response: 
+        1. Select profile to go to the profile screen
+    
+    Question: How do I get to search?
+    Response: 
+        1. Select profile to go to the profile screen, then select profile_button1 to get to the search screen
+    
 
         =============================
-        Given the above context, assuming that the user is currently on screen 1, answer the user's question.
+        Given the above context, answer the user's question.
         
-        Question: {question}?
+        Question: {question} assuming that the user is currently on the home screen?
 
         Response:
         '''
