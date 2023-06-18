@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 load_dotenv() # load env variables
 
 def load_ui_table():
-    with open("ui_2.yml") as f:
+    with open("ui.yml") as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
     return data
 
