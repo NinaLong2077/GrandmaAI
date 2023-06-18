@@ -26,7 +26,6 @@ def detected_Confusion(emotions):
         if emotion['name'] == 'Confusion':
             return True
 
-
 async def send_to_api(filepath):
     try:
         client = HumeStreamClient("YOKvO8EbtQ5bRXuBWVJGtbie49cUP5MXXHA1gf0z7xvEtahB")
@@ -35,7 +34,6 @@ async def send_to_api(filepath):
         config = FaceConfig(identify_faces=True)
         async with client.connect([config]) as socket:
             result = await socket.send_file(filepath)
-            # emotions = result["face"]["predictions"][0]["emotions"]
             emotions = get_emotions(result)
             top_3_emotions = get_top_3_emotions(emotions)
             print(top_3_emotions)
@@ -46,8 +44,9 @@ async def send_to_api(filepath):
                 if response.status_code == 200:
                     print('POST request successful')
                     print('request get:')
-                    print(requests.get(url))
-                    send_to_api.cancel()
+                    print(requests.get(url).text)
+                    global stop_processing
+                    stop_processing = True
 
                 else:
                     print('POST request failed')
@@ -55,6 +54,9 @@ async def send_to_api(filepath):
         print(traceback.format_exc())
 
 def capture_frames():
+    global stop_processing
+    stop_processing = False
+
     # Initialize the camera
     capture = cv2.VideoCapture(0)  # 0 represents the default camera, change if necessary
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -70,7 +72,7 @@ def capture_frames():
         cv2.imshow('Camera', frame)
 
         # Check if 1 second has passed
-        if time.time() - start_time >= 1.0:
+        if time.time() - start_time >= 1.0 and not stop_processing:
             # Reset the timer
             start_time = time.time()
 

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, make_response, jsonify
+from flask import render_template, jsonify, request
 
 import json
 import os
@@ -62,9 +62,22 @@ def make_prompt(question):
 # init flask app
 app = Flask(__name__)
 
+confusion_detected = False
+
 @app.route('/') # empty page
 def index():
     return render_template('index.html')
+
+@app.route('/api/confusion-detected', methods=['GET', 'POST'])
+def check_confusion_detected():
+    global confusion_detected
+
+    if request.method == 'POST':
+        confusion_detected = True
+        return jsonify(str(True))
+    else:
+        return jsonify(str(confusion_detected))
+
 
 @app.route('/api/<path:question>', methods=['GET', 'POST'])
 def get_agent_response(question):
@@ -93,7 +106,7 @@ def get_agent_response(question):
 
     prompt = f'''
     Please analyze the response and identify the UI elements in order. Return the names of these elements based on the order it was listed in response in a list format, like ["element1", "element2", "element3", ...]. 
-    If the UI element is like "button 2", make it "button2" in the list.
+    If the UI element is like "button 2", make it "button2" in the list. Do not put "Answer: " in front of the list just return a list.
 
     Instruction: \"{response}\"
     '''
@@ -104,7 +117,7 @@ def get_agent_response(question):
         max_tokens=256,
         n=1,
         stop=None,
-        temperature=0.8
+        temperature=0
     ).choices[0].text.strip()
 
     # The model's output is a string representation of a list, 
