@@ -1,22 +1,65 @@
 {
-    "screen1": {
-        "name": "main",
-        "ui_elements": {
-            "button1": {"goes_to": "screen2", "highlighted": false},
-            "button2": {"goes_to": "screen3", "highlighted": false}
-        }
-    },
-    "screen2": {
-        "name": "profile",
-        "ui_elements": {
-            "text1": {"text": "location", "highlighted": false},
-            "text2": {"text": "username", "highlighted": false}
-        }
-    },
-    "screen3": {
-        "name": "settings",
-        "ui_elements": {
-            "text1": {"text": "privacy", "highlighted": false}
-        }
+  "home": {
+    "name": "home",
+    "ui_elements": {
+      "profile": {
+        "goes_to": "profile",
+        "highlighted": false
+      },
+      "settings": {
+        "goes_to": "settings",
+        "highlighted": false
+      },
     }
+  },
+  "profile": {
+    "name": "profile",
+    "ui_elements": {
+      "text1": {
+        "text": "location",
+        "highlighted": false
+      },
+      "text2": {
+        "text": "username",
+        "highlighted": false
+      },
+      "profile_button1": {
+        "text": "go_to_search",
+        "goes_to": "search",
+        "highlighted": false
+      }
+    }
+  },
+  "settings": {
+    "name": "settings",
+    "ui_elements": {
+      "text1": {
+        "text": "notifications",
+        "highlighted": false
+      },
+      "settings_button1": {
+        "text": "go_to_logout",
+        "goes_to": "logout",
+        "highlighted": false
+      }
+    }
+  },
+  "search": {
+    "name": "search",
+    "ui_elements": {
+      "text1": {
+        "text": "enter",
+        "highlighted": false
+      }
+    }
+  },
+  "logout": {
+    "name": "logout",
+    "ui_elements": {
+      "text1": {
+        "text": "sign_out",
+        "highlighted": false
+      }
+    }
+  }
 }
